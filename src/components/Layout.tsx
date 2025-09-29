@@ -1,68 +1,55 @@
-import { Link, NestedView, useActive, useRouter } from "alepha/react";
-import { useI18n } from "alepha/react/i18n";
-import type { ReactNode } from "react";
-import type { AppRouter } from "../AppRouter.js";
-import type { I18n } from "../locales/I18n.js";
+import { ColorSchemeScript, Flex, MantineProvider } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
+import { Notifications } from "@mantine/notifications";
+import { NavigationProgress, nprogress } from "@mantine/nprogress";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { NestedView, useAlepha, useRouterEvents } from "alepha/react";
+import { theme } from "../constants/theme.js";
+import type { Character, Project, Task } from "../providers/Db.js";
+import Header from "./shared/Header.jsx";
 
-const MenuItem = (props: { href: string; children: ReactNode }) => {
-	const { anchorProps, isActive } = useActive(props.href);
-	return (
-		<Link {...anchorProps} className={isActive ? "active" : ""}>
-			{props.children}
-		</Link>
-	);
-};
-
-const LanguageSwitcher = () => {
-	const i18n = useI18n<I18n, "en">();
-
-	const onSetLang = (key: string) => {
-		return async () => {
-			await i18n.setLang(key);
-		};
-	};
-
-	return (
-		<div>
-			<button
-				disabled={i18n.lang === "en"}
-				type="button"
-				onClick={onSetLang("en")}
-			>
-				En
-			</button>
-			<button
-				disabled={i18n.lang === "fr"}
-				type="button"
-				onClick={onSetLang("fr")}
-			>
-				Fr
-			</button>
-		</div>
-	);
-};
+declare module "alepha" {
+	interface State {
+		current_assigned_tasks?: Task[];
+		current_project?: Project | null;
+		current_project_character?: Character | null;
+		current_task?: Task | null;
+		user_projects?: Project[];
+	}
+}
 
 const Layout = () => {
-	const router = useRouter<AppRouter>();
-	const { tr } = useI18n<I18n, "en">();
+	const alepha = useAlepha();
+
+	useRouterEvents({
+		onBegin: () => {
+			nprogress.start();
+		},
+		onEnd: () => {
+			nprogress.complete();
+		},
+	});
+
 	return (
-		<div>
-			<LanguageSwitcher />
-			<fieldset>
-				<legend>{tr("home.title")}</legend>
-				<ul>
-					<li>
-						<MenuItem href={router.path("home")}>{tr("nav.home")}</MenuItem>
-					</li>
-					<li>
-						<MenuItem href={router.path("taskCreate")}>
-							{tr("nav.addTask")}
-						</MenuItem>
-					</li>
-				</ul>
-				<NestedView />
-			</fieldset>
-		</div>
+		<>
+			{alepha.isProduction() ? <Analytics /> : undefined}
+			{alepha.isProduction() ? <SpeedInsights /> : undefined}
+			<ColorSchemeScript defaultColorScheme={theme.defaultColorScheme} />
+			<MantineProvider
+				defaultColorScheme={theme.defaultColorScheme}
+				theme={theme.mantine}
+			>
+				<Notifications />
+				<NavigationProgress />
+				<ModalsProvider>
+					<Flex className={"root"}>
+						<Header />
+						<NestedView />
+					</Flex>
+				</ModalsProvider>
+			</MantineProvider>
+		</>
 	);
 };
 

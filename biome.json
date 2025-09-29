@@ -12,6 +12,14 @@
 		"domains": {
 			"react": "recommended",
 			"test": "recommended"
+		},
+		"rules": {
+			"suspicious": {
+				"noArrayIndexKey": "warn"
+			},
+			"correctness": {
+				"useExhaustiveDependencies": "warn"
+			}
 		}
 	},
 	"assist": {

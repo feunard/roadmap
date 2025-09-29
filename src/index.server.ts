@@ -1,22 +1,28 @@
 import { Alepha, run } from "alepha";
-import { AlephaReactHead } from "alepha/react/head";
+import { AlephaReactAuth } from "alepha/react/auth";
+import { AlephaReactForm } from "alepha/react/form";
+import { AlephaServerCompress } from "alepha/server/compress";
+import { AlephaServerHelmet } from "alepha/server/helmet";
+import { AlephaServerSecurity } from "alepha/server/security";
 import { AppRouter } from "./AppRouter.js";
-import { TodoApi } from "./api/TodoApi.js";
-import { I18n } from "./locales/I18n.js";
-
-//
-// This is the server-side entry point
-//
+import { RoadmapApi } from "./api/index.js";
+import { RoadmapServices } from "./services/index.js";
 
 const alepha = Alepha.create({
-	env: {},
+	env: {
+		APP_NAME: "RDM",
+	},
 });
 
-alepha.with(AlephaReactHead);
-alepha.with(AppRouter);
-alepha.with(I18n);
+alepha.with(AlephaReactAuth);
+alepha.with(AlephaReactForm);
+alepha.with(AlephaServerHelmet);
+alepha.with(AlephaServerSecurity);
+alepha.with(AlephaServerCompress);
 
-// server-side specific imports
-alepha.with(TodoApi);
+alepha.with(RoadmapServices);
+alepha.with(RoadmapApi);
+
+alepha.with(AppRouter);
 
 run(alepha);

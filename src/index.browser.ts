@@ -1,18 +1,15 @@
 import { Alepha, run } from "alepha";
-import { AlephaReactHead } from "alepha/react/head";
+import { AlephaReactAuth } from "alepha/react/auth";
+import { AlephaReactForm } from "alepha/react/form";
 import { AppRouter } from "./AppRouter.js";
-import { I18n } from "./locales/I18n.js";
+import { RoadmapServices } from "./services/index.js";
 
-//
-// This is the browser-side entry point
-//
+const alepha = Alepha.create();
 
-const alepha = Alepha.create({
-	env: {},
-});
+alepha.with(AlephaReactAuth);
+alepha.with(AlephaReactForm);
+alepha.with(RoadmapServices);
 
-alepha.with(AlephaReactHead);
 alepha.with(AppRouter);
-alepha.with(I18n);
 
 run(alepha);

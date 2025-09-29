@@ -1,7 +1,8 @@
 {
 	"compilerOptions": {
-		"module": "nodenext",
 		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "bundler",
 		"strict": true,
 		"jsx": "react-jsx",
 		"verbatimModuleSyntax": true,
@@ -9,5 +10,6 @@
 		"moduleDetection": "force",
 		"skipLibCheck": true
 	},
+	"include": ["src", "test", "vite.config.ts"],
 	"exclude": ["node_modules", "dist"]
 }

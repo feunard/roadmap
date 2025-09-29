@@ -1,0 +1,46 @@
+name: Roadmap
+permissions: write-all
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24.x"
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check Types
+        run: pnpm check
+
+      - name: Run Tests
+        run: pnpm test
+
+      - name: Build Roadmap
+        run: pnpm build
+
+      - name: Deploy to Vercel
+        run: cd dist && pnpm vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
