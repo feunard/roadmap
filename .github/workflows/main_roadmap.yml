@@ -43,4 +43,4 @@ jobs:
         run: pnpm build
 
       - name: Deploy to Vercel
-        run: pnpm deploy --token ${{ secrets.VERCEL_TOKEN }}
+        run: pnpm deploy -- --token ${{ secrets.VERCEL_TOKEN }}
