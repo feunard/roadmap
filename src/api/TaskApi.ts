@@ -384,4 +384,46 @@ export class TaskApi {
 			return { ok: true };
 		},
 	});
+
+	moveTaskToZone = $action({
+		schema: {
+			params: t.object({
+				id: t.int(),
+			}),
+			body: t.object({
+				newZone: t.string(),
+			}),
+			response: tasks.$schema,
+		},
+		handler: async ({ params, body, user }) => {
+			const task = await this.db.tasks.findOne({
+				id: { eq: params.id },
+			});
+
+			await this.security.checkOwnership(task.projectId, user);
+
+			// Update the task's package (zone)
+			const updatedTask = await this.db.tasks.updateById(params.id, {
+				package: body.newZone,
+				history: [
+					...task.history,
+					{
+						at: this.dt.nowISOString(),
+						by: user.id,
+						action: "updated",
+					},
+				],
+			});
+
+			// Ensure the new zone exists in the project's packages list
+			const project = await this.db.projects.findById(task.projectId);
+			if (!project.packages.includes(body.newZone)) {
+				await this.db.projects.updateById(project.id, {
+					packages: [...project.packages, body.newZone],
+				});
+			}
+
+			return updatedTask;
+		},
+	});
 }

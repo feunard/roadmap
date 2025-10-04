@@ -1,11 +1,5 @@
-import {
-	ActionIcon,
-	Button,
-	Flex,
-	Stack,
-	Text,
-	UnstyledButton,
-} from "@mantine/core";
+import { useDroppable } from "@dnd-kit/core";
+import { ActionIcon, Button, Flex, Stack, Text } from "@mantine/core";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { useState } from "react";
 import type { Task } from "../../../providers/Db.js";
@@ -20,6 +14,14 @@ interface TaskGroupProps {
 const TaskGroup = (props: TaskGroupProps) => {
 	const [isCollapsed, setIsCollapsed] = useState(true);
 
+	const { setNodeRef, isOver } = useDroppable({
+		id: `zone-${props.name}`,
+		data: {
+			type: "zone",
+			zoneName: props.name,
+		},
+	});
+
 	// sort by complexity
 	const tasks = [...props.tasks].sort((a, b) =>
 		a.complexity - b.complexity > 0 ? -1 : 1,
@@ -31,7 +33,15 @@ const TaskGroup = (props: TaskGroupProps) => {
 	};
 
 	return (
-		<Stack gap={0}>
+		<Stack
+			gap={0}
+			ref={setNodeRef}
+			style={{
+				backgroundColor: isOver ? "rgba(64, 192, 87, 0.1)" : undefined,
+				borderRadius: isOver ? "4px" : undefined,
+				transition: "background-color 0.2s ease",
+			}}
+		>
 			<Flex p={0} align="center" justify="center" gap={"xs"}>
 				<Flex align="center" justify="center">
 					<ActionIcon
