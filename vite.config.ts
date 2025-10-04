@@ -32,9 +32,6 @@ export default defineConfig({
 			client: {
 				precompress: true,
 			},
-			onReload: () => {
-				console.clear();
-			},
 		}),
 	],
 	test: {

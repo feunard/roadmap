@@ -233,4 +233,46 @@ export class ProjectApi {
 			return { ok: true };
 		},
 	});
+
+	renameZone = $action({
+		schema: {
+			params: t.object({
+				id: t.int(),
+			}),
+			body: t.object({
+				oldZoneName: t.string(),
+				newZoneName: t.string({ minLength: 1 }),
+			}),
+			response: okSchema,
+		},
+		handler: async ({ params, body, user }) => {
+			const { project } = await this.security.checkOwnership(params.id, user);
+
+			// Update all tasks with the old package name to the new one
+			const tasksToUpdate = await this.db.tasks.find({
+				where: {
+					projectId: { eq: params.id },
+					package: { eq: body.oldZoneName },
+				},
+			});
+
+			// Update each task's package field
+			for (const task of tasksToUpdate) {
+				await this.db.tasks.updateById(task.id, {
+					package: body.newZoneName,
+				});
+			}
+
+			// Update the project's packages array
+			const updatedPackages = project.packages.map((pkg) =>
+				pkg === body.oldZoneName ? body.newZoneName : pkg,
+			);
+
+			await this.db.projects.updateById(params.id, {
+				packages: updatedPackages,
+			});
+
+			return { ok: true };
+		},
+	});
 }

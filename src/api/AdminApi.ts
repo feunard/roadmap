@@ -26,10 +26,10 @@ export class AdminApi {
 			response: pageSchema(projects.$schema),
 		},
 		handler: async ({ query }) => {
+			query.sort ??= "-createdAt";
 			return await this.db.projects.paginate(
 				query,
 				{
-					sort: { createdAt: "desc" },
 				},
 				{ count: true, force: true }, // force: true to include soft-deleted items
 			);

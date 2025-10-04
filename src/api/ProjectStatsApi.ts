@@ -302,7 +302,7 @@ export class ProjectStatsApi {
 
 			const tasks = await this.db.tasks.find({
 				where: { projectId: { eq: params.id } },
-				sort: { createdAt: "desc" },
+				orderBy: "createdAt",
 				limit: 1000,
 			});
 

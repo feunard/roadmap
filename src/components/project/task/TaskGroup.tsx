@@ -1,7 +1,15 @@
-import { Flex, Stack, Text } from "@mantine/core";
+import {
+	ActionIcon,
+	Button,
+	Flex,
+	Stack,
+	Text,
+	UnstyledButton,
+} from "@mantine/core";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { useState } from "react";
 import type { Task } from "../../../providers/Db.js";
+import { openRenameZoneModal } from "./RenameZoneModal.jsx";
 import TaskItem from "./TaskItem.jsx";
 
 interface TaskGroupProps {
@@ -17,18 +25,30 @@ const TaskGroup = (props: TaskGroupProps) => {
 		a.complexity - b.complexity > 0 ? -1 : 1,
 	);
 
+	const handleRenameZone = (e: React.MouseEvent) => {
+		e.stopPropagation();
+		openRenameZoneModal(props.name);
+	};
+
 	return (
 		<Stack gap={0}>
-			<Flex
-				p={0}
-				gap={"xs"}
-				align="center"
-				justify="center"
-				onClick={() => setIsCollapsed(!isCollapsed)}
-			>
-				<Flex align="center" justify="center" gap={"xs"}>
-					{isCollapsed ? <IconMinus size={10} /> : <IconPlus size={10} />}
-					<Text fw={"bold"}>{props.name}</Text>
+			<Flex p={0} align="center" justify="center" gap={"xs"}>
+				<Flex align="center" justify="center">
+					<ActionIcon
+						size={"xs"}
+						variant={"subtle"}
+						onClick={() => setIsCollapsed(!isCollapsed)}
+					>
+						{isCollapsed ? <IconMinus size={10} /> : <IconPlus size={10} />}
+					</ActionIcon>
+					<Button
+						px={"xs"}
+						size={"xs"}
+						variant={"subtle"}
+						onClick={handleRenameZone}
+					>
+						<Text fw={"bold"}>{props.name}</Text>
+					</Button>
 				</Flex>
 				<Flex flex={1} align="center" justify="center" px={2}>
 					<Flex

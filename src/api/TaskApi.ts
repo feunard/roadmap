@@ -87,10 +87,10 @@ export class TaskApi {
 					...where,
 					completedAt: { isNotNull: true },
 				};
-				query.sort ??= "completedAt,desc";
+				query.sort ??= "-completedAt";
 			}
 
-			query.sort ??= "updatedAt,desc";
+			query.sort ??= "-updatedAt";
 
 			return this.db.tasks.paginate(query, {
 				where,

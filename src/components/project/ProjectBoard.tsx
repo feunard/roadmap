@@ -107,11 +107,11 @@ const ProjectBoard = () => {
 				if (!project?.id) return;
 
 				const sort =
-					sortValue === `${key},asc`
-						? `${key},desc`
-						: sortValue === `${key},desc`
+					sortValue === `${key}`
+						? `-${key}`
+						: sortValue === `-${key}`
 							? undefined
-							: `${key},asc`;
+							: `${key}`;
 
 				const result = await taskApi.getTasks({
 					params: { projectId: project.id },
