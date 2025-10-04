@@ -29,8 +29,7 @@ export class AdminApi {
 			query.sort ??= "-createdAt";
 			return await this.db.projects.paginate(
 				query,
-				{
-				},
+				{},
 				{ count: true, force: true }, // force: true to include soft-deleted items
 			);
 		},

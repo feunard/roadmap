@@ -76,10 +76,7 @@ const TaskList = (props: TaskListProps) => {
 
 				// Update project packages if needed
 				const currentProject = alepha.state.get("current_project");
-				if (
-					currentProject &&
-					!currentProject.packages.includes(newZoneName)
-				) {
+				if (currentProject && !currentProject.packages.includes(newZoneName)) {
 					alepha.state.set("current_project", {
 						...currentProject,
 						packages: [...currentProject.packages, newZoneName],
