@@ -197,6 +197,10 @@ const ProjectBoard = () => {
 		return <IconUser />;
 	};
 
+	const removeHtmlTags = (text: string) => {
+		return text.replace(/<[^>]*>/g, "");
+	};
+
 	return (
 		<Stack flex={1} gap="md" className="overflow-auto">
 			<Card withBorder p={0} flex={1}>
@@ -364,10 +368,7 @@ const ProjectBoard = () => {
 															size="xs"
 															c="dimmed"
 														>
-															{task.description
-																.slice(0, 100)
-																.replaceAll("<p>", "")
-																.replaceAll("</p>", " ")}
+															{removeHtmlTags(task.description.slice(0, 100))}
 														</Text>
 													)}
 												</Flex>
