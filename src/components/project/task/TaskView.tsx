@@ -2,6 +2,7 @@ import { Card, Drawer, Flex, Stack, Text } from "@mantine/core";
 import { modals } from "@mantine/modals";
 import {
 	IconCircleFilled,
+	IconCopy,
 	IconEdit,
 	IconFileText,
 	IconPigMoney,
@@ -131,15 +132,18 @@ const TaskView = (props: TaskViewProps) => {
 								{task.title}
 							</Text>
 							{!task.completedAt && (
-								<EditTaskButton
-									task={task}
-									onUpdate={(it) => {
-										setTask(it);
-										alepha.state.set("current_task", it);
-									}}
-									showDialog={showDialog}
-									setShowDialog={setShowDialog}
-								/>
+								<>
+									<EditTaskButton
+										task={task}
+										onUpdate={(it) => {
+											setTask(it);
+											alepha.state.set("current_task", it);
+										}}
+										showDialog={showDialog}
+										setShowDialog={setShowDialog}
+									/>
+									<DuplicateTaskButton task={task} />
+								</>
 							)}
 							<Flex
 								flex={1}
@@ -371,6 +375,70 @@ const EditTaskButton = (props: {
 						onSubmit={(task) => {
 							setShowDialog(false);
 							props.onUpdate(task);
+						}}
+					/>
+				</Card>
+			</Drawer>
+		</Flex>
+	);
+};
+
+const DuplicateTaskButton = (props: { task: Task }) => {
+	const [showDialog, setShowDialog] = useState(false);
+	const client = useClient<TaskApi>();
+	const [project] = useStore("current_project");
+
+	if (!project) {
+		return null;
+	}
+
+	if (!client.createTask.can()) {
+		return null;
+	}
+
+	// Prepare duplicate task data (exclude id and timestamps)
+	const duplicateTaskData = {
+		title: `${props.task.title} (Copy)`,
+		description: props.task.description,
+		package: props.task.package,
+		priority: props.task.priority,
+		complexity: props.task.complexity,
+		objectives: props.task.objectives.map((obj) => ({
+			title: obj.title,
+			completed: false, // Reset completion status for duplicate
+		})),
+	};
+
+	return (
+		<Flex>
+			<Action
+				px={"xs"}
+				variant={"subtle"}
+				onClick={() => {
+					setShowDialog(true);
+				}}
+			>
+				<IconCopy size={theme.icon.size.md} />
+			</Action>
+			<Drawer
+				title={"Duplicate Quest"}
+				size={"xl"}
+				position={"right"}
+				opened={showDialog}
+				onClose={() => setShowDialog(false)}
+				className={"drawer"}
+			>
+				<Card
+					withBorder
+					bg={theme.colors.card}
+					radius={"md"}
+					className={"shadow"}
+				>
+					<TaskCreate
+						project={project}
+						task={duplicateTaskData as Task}
+						onSubmit={() => {
+							setShowDialog(false);
 						}}
 					/>
 				</Card>

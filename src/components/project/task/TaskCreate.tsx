@@ -23,7 +23,7 @@ import TaskCreateObjectives from "./TaskCreateObjectives.jsx";
 
 export interface TaskCreateProps {
 	onSubmit: (task: Task) => void;
-	task?: Task;
+	task?: Partial<Task>;
 	project: Project;
 }
 
@@ -34,12 +34,14 @@ const TaskCreate = (props: TaskCreateProps) => {
 	const { tr } = useI18n<I18n, "en">();
 	const [currentProject, setCurrentProject] = useStore("current_project");
 
+	const update = !!props.task?.id;
+
 	const form = useForm({
 		id: "task-create",
 		schema: t.omit(taskCreateSchema, ["projectId"]),
-		initialValues: props.task,
+		initialValues: props.task as Task,
 		handler: async (data) => {
-			if (props.task) {
+			if (props.task?.id) {
 				const resp = await taskApi.updateTaskById({
 					params: { id: props.task.id },
 					body: data,
@@ -197,7 +199,7 @@ const TaskCreate = (props: TaskCreateProps) => {
 				<Space />
 
 				<Flex>
-					{props.task ? (
+					{update ? (
 						<Action
 							variant={"filled"}
 							color={"blue"}
