@@ -35,20 +35,18 @@ export class ProjectStatsApi {
 						averageXP: t.int(),
 					}),
 				),
-				playerProgress: t.array(
+				topZones: t.array(
 					t.object({
-						playerName: t.string(),
-						level: t.int(),
-						xp: t.int(),
-						tasksCompleted: t.int(),
-						isOwner: t.boolean(),
+						zone: t.string(),
+						totalTasks: t.int(),
+						completedTasks: t.int(),
+						completionRate: t.number(),
 					}),
 				),
 				activityTimeline: t.array(
 					t.object({
 						date: t.string(),
 						tasksCompleted: t.int(),
-						xpGained: t.int(),
 					}),
 				),
 				completionRate: t.object({
@@ -154,90 +152,69 @@ export class ProjectStatsApi {
 				averageXP: Math.round(Number(row.average_xp) || 0),
 			}));
 
-			// Get player progress
-			const playerQuery = await this.db.query(
+			// Get top 5 zones/packages
+			const zonesQuery = await this.db.query(
 				sql`
 				SELECT
-					u.name as player_name,
-					c.xp,
-					c.owner as is_owner,
-					COUNT(t.id) as tasks_completed
-				FROM ${this.db.characters.table} c
-				JOIN ${this.db.users.table} u ON u.id = c.user_id
-				LEFT JOIN ${tasks} t ON t.completed_by = c.user_id
-					AND t.project_id = c.project_id
-					AND t.completed_at IS NOT NULL
-				WHERE c.project_id = ${params.id}
-				GROUP BY c.id, u.name, c.xp, c.owner
-				ORDER BY c.owner DESC, c.xp DESC
+					COALESCE(${tasks.package}, 'Unassigned') as zone,
+					COUNT(*) as total_tasks,
+					COUNT(CASE WHEN ${tasks.completedAt} IS NOT NULL THEN 1 END) as completed_tasks
+				FROM ${tasks}
+				WHERE ${tasks.projectId} = ${params.id} AND ${tasks.deletedAt} IS NULL
+				GROUP BY ${tasks.package}
+				ORDER BY total_tasks DESC
+				LIMIT 5
 			`,
 				t.object({
-					player_name: t.string(),
-					xp: t.string(),
-					tasks_completed: t.string(),
-					is_owner: t.boolean(),
+					zone: t.string(),
+					total_tasks: t.string(),
+					completed_tasks: t.string(),
 				}),
 			);
 
-			const playerProgress = playerQuery.map((row) => {
-				const xp = Number(row.xp) || 0;
-				// Calculate level using the same logic as CharacterInfo
-				let level = 1;
-				const levels = [
-					1080, 2200, 4800, 8400, 13000, 19000, 27000, 37000, 49000, 63000,
-					79000, 97000, 117000, 139000, 163000, 189000, 217000, 247000,
-				];
-				let acc = 0;
-				for (let i = 0; i < levels.length; i++) {
-					acc += levels[i];
-					if (xp < acc) {
-						level = i + 1;
-						break;
-					}
-				}
-				if (xp >= acc) level = levels.length;
+			const topZones = zonesQuery.map((row) => {
+				const totalTasks = Number(row.total_tasks) || 0;
+				const completedTasks = Number(row.completed_tasks) || 0;
+				const completionRate =
+					totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
 				return {
-					playerName: row.player_name || "Anonymous User",
-					level,
-					xp,
-					tasksCompleted: Number(row.tasks_completed) || 0,
-					isOwner: Boolean(row.is_owner),
+					zone: row.zone,
+					totalTasks,
+					completedTasks,
+					completionRate,
 				};
 			});
 
-			// Get activity timeline (last 30 days)
+			// Get activity timeline (last 14 days with all dates)
 			const timelineQuery = await this.db.query(
 				sql`
+				WITH date_series AS (
+					SELECT generate_series(
+						CURRENT_DATE - INTERVAL '13 days',
+						CURRENT_DATE,
+						'1 day'::interval
+					)::date AS date
+				)
 				SELECT
-					DATE(${tasks.completedAt}) as date,
-					COUNT(*) as tasks_completed,
-					SUM(
-						CASE
-							WHEN ${tasks.priority} = 'high' THEN ${tasks.complexity} * 150 + 300
-							WHEN ${tasks.priority} = 'medium' THEN ${tasks.complexity} * 150 + 180
-							ELSE ${tasks.complexity} * 150 + 80
-						END
-					) as xp_gained
-				FROM ${tasks}
-				WHERE ${tasks.projectId} = ${params.id}
-					AND ${tasks.completedAt} IS NOT NULL
-					AND ${tasks.completedAt} >= CURRENT_DATE - INTERVAL '30 days'
-				GROUP BY DATE(${tasks.completedAt})
-				ORDER BY date DESC
-				LIMIT 30
+					ds.date,
+					COALESCE(COUNT(t.id), 0) as tasks_completed
+				FROM date_series ds
+				LEFT JOIN ${tasks} t ON DATE(t.completed_at) = ds.date
+					AND t.project_id = ${params.id}
+					AND t.completed_at IS NOT NULL
+				GROUP BY ds.date
+				ORDER BY ds.date ASC
 			`,
 				t.object({
 					date: t.string(),
 					tasks_completed: t.string(),
-					xp_gained: t.string(),
 				}),
 			);
 
 			const activityTimeline = timelineQuery.map((row) => ({
 				date: row.date,
 				tasksCompleted: Number(row.tasks_completed),
-				xpGained: Number(row.xp_gained) || 0,
 			}));
 
 			// Calculate completion rates
@@ -274,7 +251,7 @@ export class ProjectStatsApi {
 				overview,
 				tasksByPriority,
 				tasksByComplexity,
-				playerProgress,
+				topZones,
 				activityTimeline,
 				completionRate,
 			};

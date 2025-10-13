@@ -13,7 +13,6 @@ import {
 import { notifications } from "@mantine/notifications";
 import {
 	IconChartBar,
-	IconCrown,
 	IconDownload,
 	IconStar,
 	IconTarget,
@@ -44,17 +43,15 @@ export interface ProjectStatsProps {
 			count: number;
 			averageXP: number;
 		}>;
-		playerProgress: Array<{
-			playerName: string;
-			level: number;
-			xp: number;
-			tasksCompleted: number;
-			isOwner: boolean;
+		topZones: Array<{
+			zone: string;
+			totalTasks: number;
+			completedTasks: number;
+			completionRate: number;
 		}>;
 		activityTimeline: Array<{
 			date: string;
 			tasksCompleted: number;
-			xpGained: number;
 		}>;
 		completionRate: {
 			weekly: number;
@@ -125,28 +122,22 @@ const ProjectStats = (props: ProjectStatsProps) => {
 		averageXP: item.averageXP,
 	}));
 
-	const playerData = stats.playerProgress.slice(0, 8).map((player) => ({
-		name:
-			player.playerName.length > 12
-				? `${player.playerName.substring(0, 12)}...`
-				: player.playerName,
-		xp: player.xp,
-		level: player.level,
-		tasks: player.tasksCompleted,
-		isOwner: player.isOwner,
+	const zonesData = stats.topZones.map((zone) => ({
+		zone:
+			zone.zone.length > 15 ? `${zone.zone.substring(0, 15)}...` : zone.zone,
+		fullZone: zone.zone,
+		totalTasks: zone.totalTasks,
+		completedTasks: zone.completedTasks,
+		completionRate: zone.completionRate,
 	}));
 
-	const timelineData = stats.activityTimeline
-		.toReversed()
-		.slice(-14) // Last 14 days
-		.map((item) => ({
-			date: new Date(item.date).toLocaleDateString("en-US", {
-				month: "short",
-				day: "numeric",
-			}),
-			tasks: item.tasksCompleted,
-			xp: item.xpGained,
-		}));
+	const timelineData = stats.activityTimeline.map((item) => ({
+		date: new Date(item.date).toLocaleDateString("en-US", {
+			month: "short",
+			day: "numeric",
+		}),
+		tasks: item.tasksCompleted,
+	}));
 
 	const completionDonutData = [
 		{
@@ -357,16 +348,47 @@ const ProjectStats = (props: ProjectStatsProps) => {
 												label: "Tasks Completed",
 												color: "blue.6",
 											},
-											{ name: "xp", label: "XP Gained", color: "green.6" },
 										]}
 										curveType="monotone"
 										withGradient
 										withTooltip
-										withLegend
 									/>
 								) : (
 									<Text c="dimmed" ta="center" py="xl">
 										No recent activity
+									</Text>
+								)}
+							</Stack>
+						</Card>
+					</Grid.Col>
+
+					{/* Top Zones */}
+					<Grid.Col span={12}>
+						<Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
+							<Stack gap="md">
+								<Title order={4}>Top Zones</Title>
+								{zonesData.length > 0 ? (
+									<BarChart
+										h={200}
+										data={zonesData}
+										dataKey="zone"
+										series={[
+											{
+												name: "completedTasks",
+												label: "Completed",
+												color: "green.6",
+											},
+											{
+												name: "totalTasks",
+												label: "Total",
+												color: "blue.6",
+											},
+										]}
+										withTooltip
+									/>
+								) : (
+									<Text c="dimmed" ta="center" py="xl">
+										No zones yet
 									</Text>
 								)}
 							</Stack>
@@ -391,99 +413,6 @@ const ProjectStats = (props: ProjectStatsProps) => {
 								) : (
 									<Text c="dimmed" ta="center" py="xl">
 										No data available
-									</Text>
-								)}
-							</Stack>
-						</Card>
-					</Grid.Col>
-
-					{/* Player Progress */}
-					<Grid.Col span={{ base: 12, md: 6 }}>
-						<Card shadow="sm" padding="lg" radius="md" withBorder h="100%">
-							<Stack gap="md">
-								<Title order={4}>Player Progress</Title>
-								{playerData.length > 0 ? (
-									<BarChart
-										h={200}
-										data={playerData}
-										dataKey="name"
-										series={[
-											{
-												name: "xp",
-												label: "Experience Points",
-												color: "yellow.6",
-											},
-										]}
-										withTooltip
-									/>
-								) : (
-									<Text c="dimmed" ta="center" py="xl">
-										No players yet
-									</Text>
-								)}
-							</Stack>
-						</Card>
-					</Grid.Col>
-
-					{/* Top Performers */}
-					<Grid.Col span={12}>
-						<Card shadow="sm" padding="lg" radius="md" withBorder>
-							<Stack gap="md">
-								<Title order={4}>Top Performers</Title>
-								{stats.playerProgress.length > 0 ? (
-									<SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing="sm">
-										{stats.playerProgress.slice(0, 6).map((player, index) => (
-											<Card
-												key={player.playerName}
-												withBorder
-												p="sm"
-												bg={"var(--card-bg-color)"}
-											>
-												<Group gap="sm" align="center">
-													<Badge
-														variant="light"
-														color={
-															index === 0
-																? "yellow"
-																: index === 1
-																	? "gray"
-																	: "orange"
-														}
-														size="lg"
-													>
-														#{index + 1}
-													</Badge>
-													<Stack gap={0} flex={1}>
-														<Group gap="xs">
-															<Text size="sm" fw={500}>
-																{player.playerName}
-															</Text>
-															{player.isOwner && (
-																<IconCrown
-																	size={14}
-																	color="var(--mantine-color-yellow-6)"
-																/>
-															)}
-														</Group>
-														<Group gap="lg">
-															<Text size="xs" c="dimmed">
-																Level {player.level}
-															</Text>
-															<Text size="xs" c="dimmed">
-																{player.xp.toLocaleString()} XP
-															</Text>
-															<Text size="xs" c="dimmed">
-																{player.tasksCompleted} tasks
-															</Text>
-														</Group>
-													</Stack>
-												</Group>
-											</Card>
-										))}
-									</SimpleGrid>
-								) : (
-									<Text c="dimmed" ta="center" py="xl">
-										No players to display
 									</Text>
 								)}
 							</Stack>
