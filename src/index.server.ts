@@ -2,6 +2,7 @@ import { AlephaBucketVercel } from "@alepha/bucket-vercel";
 import { Alepha, run } from "alepha";
 import { AlephaApiFiles } from "alepha/api/files";
 import { AlephaApiUsers } from "alepha/api/users";
+import { RepositoryDescriptor } from "alepha/postgres";
 import { AlephaReactAuth } from "alepha/react/auth";
 import { AlephaReactForm } from "alepha/react/form";
 import { AlephaServerCompress } from "alepha/server/compress";
@@ -17,6 +18,12 @@ const alepha = Alepha.create({
 		APP_NAME: "RDM",
 	},
 });
+
+// TODO: remove when 0.10.6 is released
+(RepositoryDescriptor as any).prototype.handleError = (error: unknown) => {
+	console.error(error);
+	return error;
+};
 
 alepha.with(AlephaReactAuth);
 alepha.with(AlephaReactForm);
