@@ -24,7 +24,7 @@ alepha.with(AlephaServerHelmet);
 alepha.with(AlephaServerSecurity);
 alepha.with(AlephaServerCompress);
 alepha.with(AlephaServerMultipart);
-//alepha.with(AlephaBucketVercel);
+alepha.with(AlephaBucketVercel);
 alepha.with(AlephaApiFiles);
 alepha.with(AlephaApiUsers);
 
