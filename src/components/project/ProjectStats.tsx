@@ -349,7 +349,6 @@ const ProjectStats = (props: ProjectStatsProps) => {
 				</SimpleGrid>
 
 				<Grid>
-
 					{/* Activity Timeline */}
 					<Grid.Col span={12}>
 						<Card shadow="sm" padding="lg" radius="md" withBorder>

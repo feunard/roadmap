@@ -1,5 +1,13 @@
 import { $inject, type Static, t } from "alepha";
+import { identities, sessions, users } from "alepha/api/users";
+import { $bucket } from "alepha/bucket";
 import { $entity, $repository, PostgresProvider, pg } from "alepha/postgres";
+
+export {
+	identities,
+	sessions,
+	users,
+} from "alepha/api/users";
 
 export const projects = $entity({
 	name: "projects",
@@ -16,61 +24,6 @@ export const projects = $entity({
 		public: t.optional(t.boolean()),
 		packages: pg.default(t.array(t.string()), []),
 	}),
-});
-
-export const users = $entity({
-	name: "users",
-	schema: t.object({
-		id: pg.primaryKey(t.uuid()),
-		createdAt: pg.createdAt(),
-		updatedAt: pg.updatedAt(),
-		email: t.string({ format: "email" }),
-		roles: t.array(t.string(), { default: ["user"] }),
-		name: t.optional(t.string()),
-		picture: t.optional(t.string()),
-	}),
-});
-
-export const identities = $entity({
-	name: "identities",
-	schema: t.object({
-		id: pg.primaryKey(t.uuid()),
-		userId: pg.ref(t.uuid(), () => users.id),
-		createdAt: pg.createdAt(),
-		updatedAt: pg.updatedAt(),
-		provider: t.string(),
-		providerUserId: t.string(),
-		providerData: t.optional(t.json()),
-	}),
-	indexes: [
-		{
-			columns: ["providerUserId", "provider"],
-			unique: true,
-		},
-	],
-});
-
-export const sessions = $entity({
-	name: "sessions",
-	schema: t.object({
-		id: pg.primaryKey(t.uuid()),
-		refreshToken: t.uuid(),
-		createdAt: pg.createdAt(),
-		updatedAt: pg.updatedAt(),
-		userId: pg.ref(t.uuid(), () => users.id, {
-			onDelete: "cascade",
-		}),
-		expiresAt: t.datetime(),
-		ip: t.optional(t.string()),
-		userAgent: t.optional(
-			t.object({
-				os: t.string(),
-				browser: t.string(),
-				device: t.enum(["Mobile", "Desktop", "Tablet"]),
-			}),
-		),
-	}),
-	indexes: ["refreshToken"],
 });
 
 export const tasks = $entity({
@@ -187,6 +140,12 @@ export class Db {
 	sessions = $repository(sessions);
 	characters = $repository(characters);
 	invitations = $repository(invitations);
+
+	avatars = $bucket({
+		name: "avatars",
+		maxSize: 5 * 1024 * 1024, // 5MB
+		mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/gif"],
+	});
 
 	provider = $inject(PostgresProvider);
 	query = this.provider.execute.bind(this.provider);

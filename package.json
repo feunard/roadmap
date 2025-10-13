@@ -12,6 +12,7 @@
 		"verify": "pnpm lint && pnpm check && pnpm test && pnpm build"
 	},
 	"dependencies": {
+		"@alepha/bucket-vercel": "^0.10.5",
 		"@dnd-kit/core": "^6.3.1",
 		"@dnd-kit/sortable": "^10.0.0",
 		"@dnd-kit/utilities": "^3.2.2",
@@ -31,7 +32,7 @@
 		"@tiptap/starter-kit": "^3.6.5",
 		"@vercel/analytics": "^1.5.0",
 		"@vercel/speed-insights": "^1.2.0",
-		"alepha": "^0.10.2",
+		"alepha": "^0.10.5",
 		"animate.css": "^4.1.1",
 		"framer-motion": "^12.23.22",
 		"highlight.js": "^11.11.1",

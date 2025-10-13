@@ -1,6 +1,7 @@
 import {
 	Avatar,
 	Badge,
+	Button,
 	Card,
 	Flex,
 	Grid,
@@ -9,18 +10,28 @@ import {
 	Text,
 	Title,
 } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
 import {
 	IconBrandGithub,
 	IconBrandGoogle,
 	IconCalendar,
+	IconCamera,
 	IconKey,
 	IconMail,
 	IconShield,
 	IconTrophy,
 	IconUser,
 } from "@tabler/icons-react";
-import { useInject } from "alepha/react";
-import type { User } from "../../providers/Db.js";
+import type {
+	IdentityEntity,
+	SessionEntity,
+	UserEntity,
+} from "alepha/api/users";
+import type { PageQuery } from "alepha/postgres";
+import { useClient, useInject, useStore } from "alepha/react";
+import { type ChangeEvent, useRef, useState } from "react";
+import type { UserApi } from "../../api/UserApi.js";
+import type { User } from "../../providers/Db";
 import { CharacterInfo } from "../../services/CharacterInfo.js";
 
 export interface ProfileProps {
@@ -46,7 +57,12 @@ export interface ProfileProps {
 
 const MyProfile = (props: ProfileProps) => {
 	const { user, characters, identities } = props;
+	const [, setUser] = useStore("user"); // to trigger re-render on avatar update
 	const characterInfo = useInject(CharacterInfo);
+	const userApi = useClient<UserApi>();
+	const fileInputRef = useRef<HTMLInputElement>(null);
+	const [uploading, setUploading] = useState(false);
+	const [currentUser, setCurrentUser] = useState(user);
 
 	// Calculate user statistics
 	const totalXP = characters.reduce((sum, char) => sum + char.xp, 0);
@@ -83,16 +99,41 @@ const MyProfile = (props: ProfileProps) => {
 		}
 	};
 
-	const getProviderColor = (provider: string) => {
-		switch (provider) {
-			case "google":
-				return "red";
-			case "github":
-				return "dark";
-			case "usernamePassword":
-				return "blue";
-			default:
-				return "gray";
+	const handleAvatarClick = () => {
+		fileInputRef.current?.click();
+	};
+
+	const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
+		const file = event.target.files?.[0];
+		if (!file) return;
+
+		setUploading(true);
+		try {
+			const updatedUser = await userApi.updateAvatar({
+				body: { file },
+			});
+			setCurrentUser(updatedUser);
+			setUser({
+				...user,
+				picture: updatedUser.picture,
+			});
+			notifications.show({
+				title: "Success",
+				message: "Avatar updated successfully",
+				color: "green",
+			});
+		} catch (error) {
+			notifications.show({
+				title: "Upload Failed",
+				message: (error as Error)?.message || "Failed to update avatar",
+				color: "red",
+			});
+		} finally {
+			setUploading(false);
+			// Reset file input
+			if (fileInputRef.current) {
+				fileInputRef.current.value = "";
+			}
 		}
 	};
 
@@ -102,9 +143,31 @@ const MyProfile = (props: ProfileProps) => {
 				{/* Header Card */}
 				<Card shadow="sm" padding="xl" radius="md" withBorder>
 					<Group gap="xl" align="flex-start">
-						<Avatar src={user.picture} size={120} radius="md">
-							<IconUser size={60} />
-						</Avatar>
+						<Stack gap="xs" align="center">
+							<Avatar
+								src={`/api/files/${currentUser.picture}`}
+								size={120}
+								radius="md"
+							>
+								<IconUser size={60} />
+							</Avatar>
+							<input
+								type="file"
+								ref={fileInputRef}
+								onChange={handleFileChange}
+								accept="image/jpeg,image/png,image/webp,image/gif"
+								style={{ display: "none" }}
+							/>
+							<Button
+								size="xs"
+								variant="light"
+								leftSection={<IconCamera size={16} />}
+								onClick={handleAvatarClick}
+								loading={uploading}
+							>
+								{uploading ? "Uploading..." : "Change Avatar"}
+							</Button>
+						</Stack>
 
 						<Stack gap="md" flex={1}>
 							<Stack gap="xs">

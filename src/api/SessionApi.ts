@@ -34,7 +34,7 @@ export class SessionApi {
 		handler: async ({ user }) => {
 			const sessions = await this.db.sessions.find({
 				where: {
-					userId: user.id,
+					userId: { eq: user.id },
 				},
 			});
 

@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@alepha/bucket-vercel':
+        specifier: ^0.10.5
+        version: 0.10.5
       '@dnd-kit/core':
         specifier: ^6.3.1
         version: 6.3.1(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -66,8 +69,8 @@ importers:
         specifier: ^1.2.0
         version: 1.2.0(react@19.2.0)
       alepha:
-        specifier: ^0.10.2
-        version: 0.10.2(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.1.9(@types/node@24.6.2))
+        specifier: ^0.10.5
+        version: 0.10.5(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.1.9(@types/node@24.6.2))
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
@@ -126,184 +129,204 @@ importers:
 
 packages:
 
-  '@alepha/batch@0.10.2':
-    resolution: {integrity: sha512-qW+cGsotTKZ6NHYoST0cca1ieC9KauWt4hiMGAMKeQB7Cac62Q6EKx6yfraSP5DaHk4J6WyY6Q3JKmmWG1zP4w==}
+  '@alepha/api-files@0.10.5':
+    resolution: {integrity: sha512-IjUQ73bdfdwvdDQq0k7CLaBjA8XE8BWinhUUZzP13RZoeabezEk9heePDVn0SIi0VMNJmEGzJr36F1ZQVyN1Kg==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/bucket@0.10.2':
-    resolution: {integrity: sha512-2K+FXJDHKgfAzqlJmNnkosOF0pdqawuze6wVylRpWTaIl+PEIPlXfvnP3VnTiFXMUnqoAXhQqQjZbO0ziXs5Zw==}
+  '@alepha/api-jobs@0.10.5':
+    resolution: {integrity: sha512-DiU2gHx8K9B9Iv12xSI7B1B0oJBi1M872uHUeUBzWh0yVylbx8M+/+qYW6AVqMf+Ct8SUA5a+PSif6LZE7PsLg==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/cache-redis@0.10.2':
-    resolution: {integrity: sha512-C5mSpI1qbkjEDiZuef3IV3+17N0E05wuqmKJLizO0Pe+3XV8yZ+sEg3DU2gt/S9og/751+ZqOSK/zKK1eiFkVw==}
+  '@alepha/api-users@0.10.5':
+    resolution: {integrity: sha512-zTuGPrjpAKPuL3244ihZtghxBqYOBYPDL6Q6swRGdM7kcfI7hdhWTFqHSrJdxkftZ5ZvCoG55A+iZ9j3UdkR6A==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/cache@0.10.2':
-    resolution: {integrity: sha512-D80AQ9P0dPG+3/O7vwG7t5Eoq+mHf+YG/BlXKTcEbQ8bB6AYBL12/Dr5uE/DSWj271Vvaacg5wFPKcs/dzhDKQ==}
+  '@alepha/batch@0.10.5':
+    resolution: {integrity: sha512-cwQR4HsdD0c4ZS7Z9JTgOcS+HID1ddAppWT5SOHzA3C+MZIzNluobJYZDqQ16ClKhe36IVQMK+HqrCBHLAiolw==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/command@0.10.2':
-    resolution: {integrity: sha512-gkx0gewS8h19R4ANvE71dbcfUanqM8Er4Uxq2miIeefuuLNUtpHPWL3458m3YhDJuqb1+nhY39wyc7QkG4vWXg==}
+  '@alepha/bucket-vercel@0.10.5':
+    resolution: {integrity: sha512-WJosAcBkS0lokEBW8fmOHz0QDUTZ1XXwIp7zvN6ARUHA+EDjlmFjbKsB2tG46XnReolr06/X1ewOUpaGADtMog==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/core@0.10.2':
-    resolution: {integrity: sha512-LufEjEZZU/sPei7Wow1x7MGcm4EcpkGYkcdNoAaQpQg0Cv/cgcthIDTwQx0cPVtPdR2IWKZdvNeTUboXUp2DRA==}
+  '@alepha/bucket@0.10.5':
+    resolution: {integrity: sha512-OgBlUaiTl5xlkaLq3hDz738XeKhfVcbWRTCTYzzOK+qBTUhF2s2UVFX7tAtBWT7nUJxYTr5uf9mRwpRc7tqpDA==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/datetime@0.10.2':
-    resolution: {integrity: sha512-KZmOpsaTrWx0Iqv9Qn7LYgrbUrdjxK0NuqLR3wocPvfASDicjbgLR/ahO/iiUmmkCG9mJLHNjK1j2W5cKOMzJA==}
-
-  '@alepha/email@0.10.2':
-    resolution: {integrity: sha512-0y6op6HymUbytrtrQ1wvl5nNVrV5dv8ZmQChvgNq5fYLBZHOCj28++BABJDpbyli5ECZr90IyeEpmCe4uda+Eg==}
+  '@alepha/cache-redis@0.10.5':
+    resolution: {integrity: sha512-PeE/F/k3u6hRwwpY56esmNUJ+8EMVVA1fboyOcHGeQUZSZ+xh/V62avEEHYzpIkKLuhWV1MWCWlgvnhQD/iG7g==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/file@0.10.2':
-    resolution: {integrity: sha512-QZP6lXJRnhf/R12dNLh4r3nNm5UT4alBiPMRwC1tpEJtG5cQJn7pV6gD3osiIl3ue3qdGixQWH57GmkO5ne6Nw==}
+  '@alepha/cache@0.10.5':
+    resolution: {integrity: sha512-Geu/zRuhIbhovce0pgwZn5scSbDfQJWNOhyDoPyjRhUZb1n2HvArII/xLuZ6UBOyAw5YX20kU39MWnPSqhC9gQ==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/lock-redis@0.10.2':
-    resolution: {integrity: sha512-lb2H1tlAYUA4RXCA+E0F1964A/a+xrXlfSb34g6+BUDSsCcpEPPa/WBr0Ps3mQwSh/IdY5rW+Aa36Jph5bj1Lw==}
+  '@alepha/command@0.10.5':
+    resolution: {integrity: sha512-bIO+AVT9zDirwPjLlBbWxDbTjK//IrNPsFZVMwUNCn6+d0BdC0yVAKB/YCrjafTKfdon2+hv5mh+eleS32HMow==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/lock@0.10.2':
-    resolution: {integrity: sha512-+vGrCQq2OZBS1vU19TIdNWmr5UlOScMZVAfhfTnVOjjM+0w76DEw+ACmtUhYo9Tk/YZ1LOvMMjG3s0fa/Aq+9A==}
+  '@alepha/core@0.10.5':
+    resolution: {integrity: sha512-7IFqnQaoLSn9NAca26NvO1r95D/PL9R9K6ojA2bH3rsJO52uTRbwNJKDsQoE+MjHw1Oc4Bhz1whEtYLlZbB1qQ==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/logger@0.10.2':
-    resolution: {integrity: sha512-csw185tlCYvv5oczSJQG/G833eFAdSWkAhNbgy54Japm3rFcbl1kvxPr/aAlL8xhd4vH5irJ4DWdecaOjcgp7w==}
+  '@alepha/datetime@0.10.5':
+    resolution: {integrity: sha512-EIzznCf4oM9soBRoDtYWhO88QenU4Vwek7LlH5Gt1VQyB+dbhepIaJrDxEIJu+oWRc9RHeuC53ifTQkaXh0Giw==}
+
+  '@alepha/devtools@0.10.5':
+    resolution: {integrity: sha512-3tJG/EWmQKFUiLYFD+M5srETpwng+M8xIs8QSgORRMqVIoawuJkFQAdVGQdPAfQdvC5eUcv+CHjtNmdBBBRykg==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/postgres@0.10.2':
-    resolution: {integrity: sha512-8KM/0SYEkaELYqPQlBmSKcXb5V+7zDAwn3e/Z5u1Ew7BHH4YO1LnVQ5hP5rWphmIx63W8zw5JwlHfqlSnTUnmw==}
+  '@alepha/email@0.10.5':
+    resolution: {integrity: sha512-QGc8ELSO4yaK/oqitSH2GYm5s229BbO+OGdgQ3LwGazSJcnUJmb0kCdksVUDU9B+1QPH2Tp4eoaA5ZdcC2nnNw==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/queue-redis@0.10.2':
-    resolution: {integrity: sha512-g19QSZ8AwdQShXh2XGg+SIYps4ZF+FwtypAA9U/zqiIp5WCFfr8LXETB6QDtdbVlR7L/Rwa1NHDApAKM28pkXQ==}
+  '@alepha/file@0.10.5':
+    resolution: {integrity: sha512-87kjacloTkTi2VxseMTSBxVgcQI368GyEyEOr9rV2CmjS5E8UeGVMyLbNiDwQ3Qq35rv+ThzgBALZ/aMboE09w==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/queue@0.10.2':
-    resolution: {integrity: sha512-IG9WTNqLSIvOv+iWK9MZkaAPRIghjQnnj+LlTIUjJL+sJjK0sxHSuSJr4oUxKxPVizPP5Q9kIDo1qtbnfL7fbw==}
+  '@alepha/lock-redis@0.10.5':
+    resolution: {integrity: sha512-6Fq3zjQMhOYXdnV0IzL2+r1lAPqrYBEpAk8hVC1KSnIRZ+wb5FV1hDNkmeMbiVkVUrJwNTGsdkub4zYuX5nFqQ==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/react-auth@0.10.2':
-    resolution: {integrity: sha512-lcsZe6gdpU7GUQQpDX9f6RavPRnTrBx0c74UbSkoCLHMC7PSz8XGusvkBDGd15jk8llwvTIM32qZHYeHea5vPA==}
+  '@alepha/lock@0.10.5':
+    resolution: {integrity: sha512-lLQxUYltCCj3DZkyR9iLPikYrFrbZMPpWnCE2PAtFQ6tCpXLXQdwRWLVD9ZYT8FgM0I8/n6F0HkzNokhplFdqA==}
     engines: {node: '>=22.0.0'}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
 
-  '@alepha/react-form@0.10.2':
-    resolution: {integrity: sha512-zPyu8DMHQ4acrOXQeTgRBKEQEAEOQPaWl079uTyHNPIg5J4f7YNRP15DdIfmyaSq+CMcNdkn7P9Bg6GY/8sa2Q==}
+  '@alepha/logger@0.10.5':
+    resolution: {integrity: sha512-kBUkurlnVEYhiCWm00IBc87ybXh9tPT0L3pQiPTKVRtCOKuJQrD3mfZtXy55pKGdEAp3C8i2IU0s/0bxeBBVcg==}
     engines: {node: '>=22.0.0'}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
 
-  '@alepha/react-head@0.10.2':
-    resolution: {integrity: sha512-szZ5Ps6uaxEBEYCno4aTCHSdKyETH6HRsBTcGDt3KxDeMkSCiDhcE+e4rVnXUp+IR/xFnDewtaXJz87njp5XMA==}
+  '@alepha/postgres@0.10.5':
+    resolution: {integrity: sha512-3bzVtwWuW3/rTggUS9Lx5ztK4x176Bq3JKClF423DpcucPCIFsww3cWU2rG4oQmxIK09SPEXSyy9DAaIaquT/Q==}
     engines: {node: '>=22.0.0'}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
 
-  '@alepha/react-i18n@0.10.2':
-    resolution: {integrity: sha512-0l3AYlMLYWMw64wA1kx4TdKCDIH2uzo38SnV2M7d3deIh3lafLq3iFng+vLZzrPmC0ReicC+HwJWQPBcT+HlOw==}
+  '@alepha/queue-redis@0.10.5':
+    resolution: {integrity: sha512-+qpfSdKqE+4DWTIJB913dYrYxbhd1isinI3Q/nS0I24mV0P/kKfuknq/KKpFWp0fq2VbRnJFawV5OFJ92kN7xQ==}
     engines: {node: '>=22.0.0'}
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
 
-  '@alepha/react@0.10.2':
-    resolution: {integrity: sha512-jbzaT/dgVt4Dk4DUMMFThGxqqu6bsEUAFduhRQ4O/T6yNK20/eN8FfLPoj9UoKbSUgexyH4PcPAWVr6+ncrxwg==}
+  '@alepha/queue@0.10.5':
+    resolution: {integrity: sha512-nbamF5GVbzkrSOJYQSiJEyrPwgftyogkp+fHGGhnk6Z8StoDmTjOFwvWB0VqgHR0bknlT3QfjnGzmpLTrwsMbw==}
+    engines: {node: '>=22.0.0'}
+
+  '@alepha/react-auth@0.10.5':
+    resolution: {integrity: sha512-Q23htcvRJbGy5x2cgWT0iHO/uNyWTrV/9ZJu3SZtamv+tN+DO/S0GqIobNB2QO2XJYT85SLe+4Bw00S+J9lFJw==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       react: '*'
       react-dom: '*'
 
-  '@alepha/redis@0.10.2':
-    resolution: {integrity: sha512-eUKGT03VvUf29O4o0b8iRyVPAdRWX6/9es/sSDN9mR4XlMafMUkrVCzkUhm1E5nOmo4NDIwhAiH4beoDjn/JiQ==}
+  '@alepha/react-form@0.10.5':
+    resolution: {integrity: sha512-4BOSQuwq8z6T8vK9ZsHWXjBanBkQKpvLr780SREELwF9LYMbp3MTcRBWlCXha3Rbf3Vv+QOE1djIR/q7Rj0X0A==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+
+  '@alepha/react-head@0.10.5':
+    resolution: {integrity: sha512-g+CA4b5jf5tf01f5m5796QwgHjGu92JL/66rWvPiI9nTmnHQ2gIuXw6DwgWMFJisWfHG6he/FiWWV1xhBfRX8A==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+
+  '@alepha/react-i18n@0.10.5':
+    resolution: {integrity: sha512-ny5uhkWFjHlC0+94YPcVybdubOLYrV1wgHlhz9j6Q1w8k2sR6ZsFHZvhWUgaWGuuhzyINtvfmBJ8YPpF8441Qw==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+
+  '@alepha/react@0.10.5':
+    resolution: {integrity: sha512-lIUylYCumq9vo62wQXHL7dVgCLHgVQ64YyePqzMZ6Oqrdwi+Dffzzl2PWtAbm6NqJVOwUqoD2+NFk5ZcoheF6g==}
+    engines: {node: '>=22.0.0'}
+    peerDependencies:
+      react: '*'
+      react-dom: '*'
+
+  '@alepha/redis@0.10.5':
+    resolution: {integrity: sha512-G0wd/+qCDma+aEh7bjcNkaz5pjQYUOn7yH67RLGNzANtPQpZrmXa+tS5EaDx4N1vxZzE9sQEued0EluxgRLjvw==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/retry@0.10.2':
-    resolution: {integrity: sha512-Jld8beB9IywwVLNtWzLnPLHlcr8qmlPbJhRxmLz+1pCxVb0EqlHXzlgIZ5e65VmfEkoplG1YnCdlTUcgLTq6FQ==}
+  '@alepha/retry@0.10.5':
+    resolution: {integrity: sha512-jUvUI4zNhT7+YFiNE/EYPZkIN8aNdWgqjyBawGfhUhtLQJzO5Uf8XeCaHgF8sBdQdJRJh89uzR6zywb2Ir+u4A==}
 
-  '@alepha/router@0.10.2':
-    resolution: {integrity: sha512-WhV44Gw9aK/0qiUejCOroXiG57We/gnN/vPmINO5R/lSI2afC60JB8UrrF2a+ZxIYZzEeu0M0mmBl8GwC7bJyQ==}
+  '@alepha/router@0.10.5':
+    resolution: {integrity: sha512-5aMPElyEgZj+5AyL13WGpC3RS2DD7fmbeyyb62OrxfvPtkLp86mN00VxAWs7pqnjyMyKZ5oOS8eQGU2lS85tCg==}
 
-  '@alepha/scheduler@0.10.2':
-    resolution: {integrity: sha512-CkCsRcP8Ex45GtX7LuiQe9svNMoq96S6JaZPzIxEWvOmEWZfDSq7NQHMCsNGrV8TGTPUJnhxh4KfiK6p5g2L/w==}
+  '@alepha/scheduler@0.10.5':
+    resolution: {integrity: sha512-RL+pGW8R5DgeV6DywrVCrfHVyr1NdYkKZlIiJQgX0GdO7eYqIAR3pAxUUREETZY2WpEVg/msx6B03ArDg8gm6g==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/security@0.10.2':
-    resolution: {integrity: sha512-zuUUDjX6eoVzDLiUoZ5kQnbVDNpx2JPoPxP1w0JjIMnJC9DU4tCBFvurRJvx6PCKRrPDlLbYQJ1jy1VplgT1LQ==}
+  '@alepha/security@0.10.5':
+    resolution: {integrity: sha512-B0Pyno4uFmfuYbmtS45iyyagmMz0G+blHU1+G2fZHCdvlLt6aabLghUx/uivsWXcM42ly0quJ2sRKWR3dil8kA==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-cache@0.10.2':
-    resolution: {integrity: sha512-RSTd/fRCRE/q5raeUP4D1E6G+mwsr1clJ/cAd8/KzKJO+7+HE6lA3xnbwujEADrPKGhXoV9UUgjFmmSqglxURQ==}
+  '@alepha/server-cache@0.10.5':
+    resolution: {integrity: sha512-szYXqYR8E8OQ700TTx0fb7x+y5SmF6kAJMr1b5gb311gAn04zchgc6QP/w2zP51LwVG6d+daQNlLs+Ekgxvg5g==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-compress@0.10.2':
-    resolution: {integrity: sha512-QNXOVzkI4cTahhvzSrdsFz1zSBr5Qosel+vCw/V19BeBtCZsZ6CIQlTnmNvOj/wN3eXa4GEIavOrjmA3xpgt/g==}
+  '@alepha/server-compress@0.10.5':
+    resolution: {integrity: sha512-ykbQnGbO5jgA3ITOhWAahd17s2+vXporyzR75Uprs9LUUWISqML9cpW4XI0rQFCO2IwuzIurgGv+CSLPVXBHuA==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-cookies@0.10.2':
-    resolution: {integrity: sha512-kGatK2XOQRNEWh5krl80IqkDB2hpKfF9icdxOOXWGl5TsKfT4NQav4MfmUbmJYygWNQLHQcs79tWBzkekto3xg==}
+  '@alepha/server-cookies@0.10.5':
+    resolution: {integrity: sha512-dcJ/4v/cdAwIm1y+cDznphBisWSPOgtFCV0djLSDAOPBe3aSkduqySOBR+RlWJzp/VpOLrVbt1g9OXcKqCzvxg==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-cors@0.10.2':
-    resolution: {integrity: sha512-O1qU8/Q1P3XmQAmA/VvyNWgraayflE7/ukTdIjiUz2R64g5hrHNde9z7szYPHcbMVWhVxP8Ic+VKBiRjMGLXZg==}
+  '@alepha/server-cors@0.10.5':
+    resolution: {integrity: sha512-01ER27lGxC4slh37BRyL+uBKlxTBkK0p46F3SJsfBS4ZSw6tz8w6oDWLpYILIE1zZqGlfzWBxcSjzoz2hCoCUA==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-health@0.10.2':
-    resolution: {integrity: sha512-j3p8Xe1Cdn1de3fTS5878D6YJJJ9gi3xH+Xk21xPfNJYwOzGI2nvX54yHFgbepgjm8g3OgXlLRPZWoeyw/xHXw==}
+  '@alepha/server-health@0.10.5':
+    resolution: {integrity: sha512-eCDSpLN7Q+g6oyNXaBPB9HiYKKr8ZArIh3wxHPOHnFrQVPk06QsbXwd5sXxr0h94DIAeYHEIvJrUOKV8exIXpw==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-helmet@0.10.2':
-    resolution: {integrity: sha512-o+3us/dQkxItoHGt1a22x7jfGuLKcjBrEmdDYJF2zvukr4dbqGe11s9QRY/5licXT225Yv1Z0ross5byh8wuhA==}
+  '@alepha/server-helmet@0.10.5':
+    resolution: {integrity: sha512-fAWXJ/u7ABeSel39II2jXYeDQX5PgNuqS8Bju+Q5ygOujUoFCml6yr3i244rLeTYmZiRX6CS1UVEmNybUZhLyA==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-links@0.10.2':
-    resolution: {integrity: sha512-HKhEyxNd7LBzTZ9I1UJ5oBB/IzJ+qaL1CQUTDXaGfGVxfgFWhOJsi7oaEGIj1hRE6rSic8Zj7fJyNCMw6/jRPg==}
+  '@alepha/server-links@0.10.5':
+    resolution: {integrity: sha512-Ej7rwl/IpcSfm6gBt1cgcFUA0CqxRG0VSVsbwf7dzRUYaE0KMzhQ9YHAU4Bj6BsBK5p0GzM5BhD1tnVe3LYFDg==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-metrics@0.10.2':
-    resolution: {integrity: sha512-dKX5dMDK5U0PycaTEymU4P01qYlbrUb1DBnDQN9DcoQT7E+yzSM2Lsb8mpLMKkJoKAQRFGZqVImFzJF+8VY0yw==}
+  '@alepha/server-metrics@0.10.5':
+    resolution: {integrity: sha512-FCyQqF8BCD6h38qhUsTecndF8VGqs6dtVLPfEl4zOESnkNf7QFAgvzZ0h175qBOsW3HxEPfyiLENiHlF9/FRJA==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-multipart@0.10.2':
-    resolution: {integrity: sha512-8nAeDV2NIi6B/spFXw36qPwTO9D6ECI6g7Tiai6/r8OLjw0lQItRiXYoR9xjKYJNBwBfDYgIs8KZvjp2Q9cDHA==}
+  '@alepha/server-multipart@0.10.5':
+    resolution: {integrity: sha512-juiaiJNh1FG4ecwjCa4+2UDghK6UO8X5Uxj/NOPZ0p6+fsfNrLOZ0NyBdlbLU0nZN/K8IadZ2LYvC4HjzidHLQ==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-proxy@0.10.2':
-    resolution: {integrity: sha512-svSBLf5q/gBAgaKEId4a8XldhJlXGxej/I0k7Zd8acRST2kiDgInY1TjhHWSWZTYVEKSSGeOXeQZu9cyWe2QTw==}
+  '@alepha/server-proxy@0.10.5':
+    resolution: {integrity: sha512-DUN0hfsIMfwhGfKNnD4fzavkCV/qwfA9S3tgPLRjF7Q3AfzhNtAnU3WRkvK3AsGC/Ix7AEVU8n5BcrIRL14dcQ==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-security@0.10.2':
-    resolution: {integrity: sha512-Xh5b+1TqHtdo+OellObQDOEbShmTxbiBj5uzbT0kgzPt6v5SSuheOrUF9xKRpKM3FBqzUUEAUXIGHV8bExg0RQ==}
+  '@alepha/server-security@0.10.5':
+    resolution: {integrity: sha512-WPt/rdH8qPQZ7hVbUcjnDLIi9bVXXS41KhOl2f+0H2HABHcc+s8tr43VatNqC+OFT0dNoJwrNqaOcL3ytGct1A==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-static@0.10.2':
-    resolution: {integrity: sha512-uPHd54OoeuiAmk8DAIx8xzawVk/NLNz4JC7lJgr+YIZAEfLoec6hXRi3xWh6yyMYTmr14QomlNJ2LuXGljD9mA==}
+  '@alepha/server-static@0.10.5':
+    resolution: {integrity: sha512-cZy2+mGvzUiPBDxWdNv0Da3oXYleT+wuzzSsRd5ysKGhEEybFI3mTXpMoFoYemIhtXSfWXPzeywd957OBm0Xjw==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server-swagger@0.10.2':
-    resolution: {integrity: sha512-t5jOz+qaCJsMwbNYn463fFASebH6DORcEUMZP3YAzbqVVRBpyceTIpreI0UvLDGznE0muu4cR61mGP46Fxmz4w==}
+  '@alepha/server-swagger@0.10.5':
+    resolution: {integrity: sha512-CiS5lEl44DTVyqg+hEXRnwer+LQOWHJDTj8jdyoOhYh/k1DbZHXqpz3v1RN43zuPN8wkLrdCUqkKklgF0J5tug==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/server@0.10.2':
-    resolution: {integrity: sha512-FrUb4PouEUAPJnb5J/+C44H3LACPj+NJizZ3Jceenk8EUmyz7Whbu/SoDNBqUZQeRmn4E438SYXHamW+gUGKzw==}
+  '@alepha/server@0.10.5':
+    resolution: {integrity: sha512-GQmm2drYqmpNHYGerv//f4qkrJpTt5aZLOx2qOesdPZ+0wSS3Agp8/YkOeiMwbkUIU8bE7pff2VlKu1bdaU3UQ==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/topic-redis@0.10.2':
-    resolution: {integrity: sha512-mjuQxEjjy/bqoQ8ECuRat5Jjm/R79KsU7t8ihlh25ZnphqTvoJJGvp862tYeslE1wttFMX29T+3uJ95inNyD5g==}
+  '@alepha/topic-redis@0.10.5':
+    resolution: {integrity: sha512-YBbNAz7pcF6UqUTa25QBKRTGhRNQpJxISy7tL+M0XDUDHw7MrbKIyde5EIfKIZjX5bsiKTbw80MAp8zBodWY1A==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/topic@0.10.2':
-    resolution: {integrity: sha512-Uz5AATDyQooDQgg7bM1Kl5fA50g50fAlREGQZITm991OmmSPnwz+9wE28iRPTE9pwGUTWLVs1B+MoC5jpNRkFw==}
+  '@alepha/topic@0.10.5':
+    resolution: {integrity: sha512-+Kl+28T9Y79OHzS2JfHaX5vxsjtdlIXtSZfLCuQxOjdbt0LTKkVq2oxFxUwR8E/LpJyZ2K9mdJLlK0tEJ/WYUw==}
     engines: {node: '>=22.0.0'}
 
-  '@alepha/vite@0.10.2':
-    resolution: {integrity: sha512-W84tCCiUAOMgp9tBTLYzrA72WSPcYmU6QKodZwWCJwn1ZwFK/RoCr/bW9RVcgCNt9IWLkUyiM6Bbbv2C/gcD9w==}
+  '@alepha/vite@0.10.5':
+    resolution: {integrity: sha512-+0q700ifcGB8sckG8gNT0v1OGr/ad+NJHzZ+FUpXSs9/t0+vIIE+rkNYNXrYzqfwnsyLSaqeGvQuAK4cE4mUfA==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       vite: '*'
@@ -1474,6 +1497,10 @@ packages:
     resolution: {integrity: sha512-Im/KeFH4oPx7UsM+QiteimnE07bIUD7JK6CBafI9Z0jRFogaialTBMiZj8EKk/30ctUYsrpIIyP9iIY1YxWnUQ==}
     engines: {node: '>=16.14'}
 
+  '@vercel/blob@2.0.0':
+    resolution: {integrity: sha512-oAj7Pdy83YKSwIaMFoM7zFeLYWRc+qUpW3PiDSblxQMnGFb43qs4bmfq7dr/+JIfwhs6PTwe1o2YBwKhyjWxXw==}
+    engines: {node: '>=20.0.0'}
+
   '@vercel/build-utils@12.1.0':
     resolution: {integrity: sha512-yqpAh2KHm9iWUXo/aRWiLIxi8dMAwFtse2iZsg2QNEMs9W20va6L8PMFvdAa5MX9pgRwc38gbjD3V7drxSwq4g==}
 
@@ -1621,8 +1648,8 @@ packages:
   ajv@8.6.3:
     resolution: {integrity: sha512-SMJOdDP6LqTkD0Uq8qLi+gMwSt0imXLSV080qFVwJCpH9U6Mb+SUGHAXM0KNbcBPguytWyvFxcHgMLe2D2XSpw==}
 
-  alepha@0.10.2:
-    resolution: {integrity: sha512-5OQW66V9UaMkKDa4zsP+77Eww6ND/MDNkh1YLjdD/fXr0errgvbhFqRV4zdhA7CJcMNGvPbj+UZN/FeZ0MNAAA==}
+  alepha@0.10.5:
+    resolution: {integrity: sha512-pL/StBJxpE62sd8yUuhaNRP6lMOPIewMo3B5eRRLOpWZ5++33HNEoHpPxLZbZIRpeUCuUM26c0JATcCKTrMNkg==}
     engines: {node: '>=22.0.0'}
     peerDependencies:
       react: '*'
@@ -2550,8 +2577,8 @@ packages:
   node-releases@2.0.21:
     resolution: {integrity: sha512-5b0pgg78U3hwXkCM8Z9b2FJdPZlr9Psr9V2gQPESdGHqbntyFJKFW4r5TeWGFzafGY3hzs1JC62VEQMbl1JFkw==}
 
-  nodemailer@7.0.6:
-    resolution: {integrity: sha512-F44uVzgwo49xboqbFgBGkRaiMgtoBrBEWCVincJPK9+S9Adkzt/wXCLKbf7dxucmxfTI5gHGB+bEmdyzN6QKjw==}
+  nodemailer@7.0.9:
+    resolution: {integrity: sha512-9/Qm0qXIByEP8lEV2qOqcAW7bRpL8CR9jcTwk3NBnHJNmP9fIJ86g2fgmIXqHY+nj55ZEMwWqYAT2QTDpRUYiQ==}
     engines: {node: '>=6.0.0'}
 
   nopt@8.1.0:
@@ -3054,8 +3081,8 @@ packages:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
 
-  typebox@1.0.26:
-    resolution: {integrity: sha512-s6gDKKQ/ZOk0VM1G6DLGRzQx7V5YKX2IOyaEL0/6RE07MTITzNyIzu5l+XIv06t/bvgXreUr2yNe13UWCOijXw==}
+  typebox@1.0.35:
+    resolution: {integrity: sha512-K314QG+lnaymQwdJXxSPqv+X0l3zx4ltpVAXAWszwGjUT4nh1jTNdzM8bTwSh+TO7fXfv9VANnHxDzaLcCfIlw==}
 
   typescript@4.9.5:
     resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
@@ -3308,83 +3335,231 @@ packages:
 
 snapshots:
 
-  '@alepha/batch@0.10.2':
+  '@alepha/api-files@0.10.5(@opentelemetry/api@1.9.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/retry': 0.10.2
+      '@alepha/bucket': 0.10.5
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/file': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/postgres': 0.10.5(@opentelemetry/api@1.9.0)
+      '@alepha/scheduler': 0.10.5
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-multipart': 0.10.5
+      '@alepha/server-security': 0.10.5
+    transitivePeerDependencies:
+      - '@aws-sdk/client-rds-data'
+      - '@cloudflare/workers-types'
+      - '@electric-sql/pglite'
+      - '@libsql/client'
+      - '@libsql/client-wasm'
+      - '@neondatabase/serverless'
+      - '@op-engineering/op-sqlite'
+      - '@opentelemetry/api'
+      - '@planetscale/database'
+      - '@prisma/client'
+      - '@tidbcloud/serverless'
+      - '@types/better-sqlite3'
+      - '@types/pg'
+      - '@types/sql.js'
+      - '@upstash/redis'
+      - '@vercel/postgres'
+      - '@xata.io/client'
+      - better-sqlite3
+      - bun-types
+      - expo-sqlite
+      - gel
+      - knex
+      - kysely
+      - mysql2
+      - pg
+      - prisma
+      - sql.js
+      - sqlite3
 
-  '@alepha/bucket@0.10.2':
+  '@alepha/api-jobs@0.10.5(@opentelemetry/api@1.9.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/file': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/postgres': 0.10.5(@opentelemetry/api@1.9.0)
+      '@alepha/scheduler': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-security': 0.10.5
+    transitivePeerDependencies:
+      - '@aws-sdk/client-rds-data'
+      - '@cloudflare/workers-types'
+      - '@electric-sql/pglite'
+      - '@libsql/client'
+      - '@libsql/client-wasm'
+      - '@neondatabase/serverless'
+      - '@op-engineering/op-sqlite'
+      - '@opentelemetry/api'
+      - '@planetscale/database'
+      - '@prisma/client'
+      - '@tidbcloud/serverless'
+      - '@types/better-sqlite3'
+      - '@types/pg'
+      - '@types/sql.js'
+      - '@upstash/redis'
+      - '@vercel/postgres'
+      - '@xata.io/client'
+      - better-sqlite3
+      - bun-types
+      - expo-sqlite
+      - gel
+      - knex
+      - kysely
+      - mysql2
+      - pg
+      - prisma
+      - sql.js
+      - sqlite3
 
-  '@alepha/cache-redis@0.10.2':
+  '@alepha/api-users@0.10.5(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@alepha/cache': 0.10.2
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/redis': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/postgres': 0.10.5(@opentelemetry/api@1.9.0)
+      '@alepha/react-auth': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-security': 0.10.5
+    transitivePeerDependencies:
+      - '@aws-sdk/client-rds-data'
+      - '@cloudflare/workers-types'
+      - '@electric-sql/pglite'
+      - '@libsql/client'
+      - '@libsql/client-wasm'
+      - '@neondatabase/serverless'
+      - '@op-engineering/op-sqlite'
+      - '@opentelemetry/api'
+      - '@planetscale/database'
+      - '@prisma/client'
+      - '@tidbcloud/serverless'
+      - '@types/better-sqlite3'
+      - '@types/pg'
+      - '@types/sql.js'
+      - '@upstash/redis'
+      - '@vercel/postgres'
+      - '@xata.io/client'
+      - better-sqlite3
+      - bun-types
+      - expo-sqlite
+      - gel
+      - knex
+      - kysely
+      - mysql2
+      - pg
+      - prisma
+      - react
+      - react-dom
+      - sql.js
+      - sqlite3
 
-  '@alepha/cache@0.10.2':
+  '@alepha/batch@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/retry': 0.10.5
 
-  '@alepha/command@0.10.2':
+  '@alepha/bucket-vercel@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/bucket': 0.10.5
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/file': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@vercel/blob': 2.0.0
 
-  '@alepha/core@0.10.2':
+  '@alepha/bucket@0.10.5':
     dependencies:
-      typebox: 1.0.26
+      '@alepha/core': 0.10.5
+      '@alepha/file': 0.10.5
+      '@alepha/logger': 0.10.5
 
-  '@alepha/datetime@0.10.2':
+  '@alepha/cache-redis@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/cache': 0.10.5
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/redis': 0.10.5
+
+  '@alepha/cache@0.10.5':
+    dependencies:
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+
+  '@alepha/command@0.10.5':
+    dependencies:
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+
+  '@alepha/core@0.10.5':
+    dependencies:
+      typebox: 1.0.35
+
+  '@alepha/datetime@0.10.5':
+    dependencies:
+      '@alepha/core': 0.10.5
       dayjs: 1.11.18
 
-  '@alepha/email@0.10.2':
+  '@alepha/devtools@0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      nodemailer: 7.0.6
+      '@alepha/bucket': 0.10.5
+      '@alepha/cache': 0.10.5
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/queue': 0.10.5
+      '@alepha/react': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/scheduler': 0.10.5
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/topic': 0.10.5
+    transitivePeerDependencies:
+      - react
+      - react-dom
 
-  '@alepha/file@0.10.2':
+  '@alepha/email@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      nodemailer: 7.0.9
 
-  '@alepha/lock-redis@0.10.2':
+  '@alepha/file@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/lock': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/redis': 0.10.2
-      '@alepha/topic-redis': 0.10.2
+      '@alepha/core': 0.10.5
 
-  '@alepha/lock@0.10.2':
+  '@alepha/lock-redis@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/topic': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/lock': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/redis': 0.10.5
+      '@alepha/topic-redis': 0.10.5
 
-  '@alepha/logger@0.10.2':
+  '@alepha/lock@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/topic': 0.10.5
 
-  '@alepha/postgres@0.10.2(@opentelemetry/api@1.9.0)':
+  '@alepha/logger@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/lock': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/retry': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+
+  '@alepha/postgres@0.10.5(@opentelemetry/api@1.9.0)':
+    dependencies:
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/lock': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/retry': 0.10.5
       drizzle-orm: 0.44.6(@opentelemetry/api@1.9.0)(postgres@3.4.7)
       postgres: 3.4.7
     transitivePeerDependencies:
@@ -3417,214 +3592,215 @@ snapshots:
       - sql.js
       - sqlite3
 
-  '@alepha/queue-redis@0.10.2':
+  '@alepha/queue-redis@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/queue': 0.10.2
-      '@alepha/redis': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/queue': 0.10.5
+      '@alepha/redis': 0.10.5
 
-  '@alepha/queue@0.10.2':
+  '@alepha/queue@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
 
-  '@alepha/react-auth@0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@alepha/react-auth@0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/react': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/security': 0.10.2
-      '@alepha/server': 0.10.2
-      '@alepha/server-cookies': 0.10.2
-      '@alepha/server-links': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/react': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-cookies': 0.10.5
+      '@alepha/server-links': 0.10.5
       openid-client: 6.8.1
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@alepha/react-form@0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@alepha/react-form@0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/react': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/react': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@alepha/react-head@0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@alepha/react-head@0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/react': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/react': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/server': 0.10.5
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@alepha/react-i18n@0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@alepha/react-i18n@0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/react': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/server-cookies': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/react': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/server-cookies': 0.10.5
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@alepha/react@0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@alepha/react@0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/router': 0.10.2
-      '@alepha/server': 0.10.2
-      '@alepha/server-cache': 0.10.2
-      '@alepha/server-links': 0.10.2
-      '@alepha/server-static': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/router': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-cache': 0.10.5
+      '@alepha/server-links': 0.10.5
+      '@alepha/server-static': 0.10.5
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@alepha/redis@0.10.2':
+  '@alepha/redis@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
       '@redis/client': 5.8.3
 
-  '@alepha/retry@0.10.2':
+  '@alepha/retry@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
 
-  '@alepha/router@0.10.2':
+  '@alepha/router@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
+      '@alepha/core': 0.10.5
 
-  '@alepha/scheduler@0.10.2':
+  '@alepha/scheduler@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/lock': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/lock': 0.10.5
+      '@alepha/logger': 0.10.5
       cron-schedule: 5.0.4
 
-  '@alepha/security@0.10.2':
+  '@alepha/security@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
       jose: 6.1.0
 
-  '@alepha/server-cache@0.10.2':
+  '@alepha/server-cache@0.10.5':
     dependencies:
-      '@alepha/cache': 0.10.2
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/cache': 0.10.5
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-compress@0.10.2':
+  '@alepha/server-compress@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-cookies@0.10.2':
+  '@alepha/server-cookies@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-cors@0.10.2':
+  '@alepha/server-cors@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-health@0.10.2':
+  '@alepha/server-health@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-helmet@0.10.2':
+  '@alepha/server-helmet@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-links@0.10.2':
+  '@alepha/server-links@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/retry': 0.10.2
-      '@alepha/security': 0.10.2
-      '@alepha/server': 0.10.2
-      '@alepha/server-proxy': 0.10.2
-      '@alepha/server-security': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/retry': 0.10.5
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-proxy': 0.10.5
+      '@alepha/server-security': 0.10.5
 
-  '@alepha/server-metrics@0.10.2':
+  '@alepha/server-metrics@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/server': 0.10.5
       prom-client: 15.1.3
 
-  '@alepha/server-multipart@0.10.2':
+  '@alepha/server-multipart@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/file': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/file': 0.10.5
+      '@alepha/server': 0.10.5
       '@fastify/busboy': 3.2.0
 
-  '@alepha/server-proxy@0.10.2':
+  '@alepha/server-proxy@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-security@0.10.2':
+  '@alepha/server-security@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/security': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-static@0.10.2':
+  '@alepha/server-static@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/file': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/server': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/file': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/server': 0.10.5
 
-  '@alepha/server-swagger@0.10.2':
+  '@alepha/server-swagger@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/security': 0.10.2
-      '@alepha/server': 0.10.2
-      '@alepha/server-security': 0.10.2
-      '@alepha/server-static': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-security': 0.10.5
+      '@alepha/server-static': 0.10.5
       openapi-types: 12.1.3
 
-  '@alepha/server@0.10.2':
+  '@alepha/server@0.10.5':
     dependencies:
-      '@alepha/cache': 0.10.2
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/router': 0.10.2
+      '@alepha/cache': 0.10.5
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/router': 0.10.5
 
-  '@alepha/topic-redis@0.10.2':
+  '@alepha/topic-redis@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/redis': 0.10.2
-      '@alepha/topic': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/redis': 0.10.5
+      '@alepha/topic': 0.10.5
 
-  '@alepha/topic@0.10.2':
+  '@alepha/topic@0.10.5':
     dependencies:
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/logger': 0.10.2
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/logger': 0.10.5
 
-  '@alepha/vite@0.10.2(vite@7.1.9(@types/node@24.6.2))':
+  '@alepha/vite@0.10.5(vite@7.1.9(@types/node@24.6.2))':
     dependencies:
-      '@alepha/core': 0.10.2
+      '@alepha/core': 0.10.5
     optionalDependencies:
       vite: 7.1.9(@types/node@24.6.2)
 
@@ -4616,6 +4792,14 @@ snapshots:
       throttleit: 2.1.0
       undici: 5.29.0
 
+  '@vercel/blob@2.0.0':
+    dependencies:
+      async-retry: 1.3.3
+      is-buffer: 2.0.5
+      is-node-process: 1.2.0
+      throttleit: 2.1.0
+      undici: 5.29.0
+
   '@vercel/build-utils@12.1.0': {}
 
   '@vercel/detect-agent@1.0.0': {}
@@ -4883,50 +5067,54 @@ snapshots:
       require-from-string: 2.0.2
       uri-js: 4.4.1
 
-  alepha@0.10.2(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.1.9(@types/node@24.6.2)):
+  alepha@0.10.5(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.1.9(@types/node@24.6.2)):
     dependencies:
-      '@alepha/batch': 0.10.2
-      '@alepha/bucket': 0.10.2
-      '@alepha/cache': 0.10.2
-      '@alepha/cache-redis': 0.10.2
-      '@alepha/command': 0.10.2
-      '@alepha/core': 0.10.2
-      '@alepha/datetime': 0.10.2
-      '@alepha/email': 0.10.2
-      '@alepha/file': 0.10.2
-      '@alepha/lock': 0.10.2
-      '@alepha/lock-redis': 0.10.2
-      '@alepha/logger': 0.10.2
-      '@alepha/postgres': 0.10.2(@opentelemetry/api@1.9.0)
-      '@alepha/queue': 0.10.2
-      '@alepha/queue-redis': 0.10.2
-      '@alepha/react': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/react-auth': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/react-form': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/react-head': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/react-i18n': 0.10.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      '@alepha/redis': 0.10.2
-      '@alepha/retry': 0.10.2
-      '@alepha/router': 0.10.2
-      '@alepha/scheduler': 0.10.2
-      '@alepha/security': 0.10.2
-      '@alepha/server': 0.10.2
-      '@alepha/server-cache': 0.10.2
-      '@alepha/server-compress': 0.10.2
-      '@alepha/server-cookies': 0.10.2
-      '@alepha/server-cors': 0.10.2
-      '@alepha/server-health': 0.10.2
-      '@alepha/server-helmet': 0.10.2
-      '@alepha/server-links': 0.10.2
-      '@alepha/server-metrics': 0.10.2
-      '@alepha/server-multipart': 0.10.2
-      '@alepha/server-proxy': 0.10.2
-      '@alepha/server-security': 0.10.2
-      '@alepha/server-static': 0.10.2
-      '@alepha/server-swagger': 0.10.2
-      '@alepha/topic': 0.10.2
-      '@alepha/topic-redis': 0.10.2
-      '@alepha/vite': 0.10.2(vite@7.1.9(@types/node@24.6.2))
+      '@alepha/api-files': 0.10.5(@opentelemetry/api@1.9.0)
+      '@alepha/api-jobs': 0.10.5(@opentelemetry/api@1.9.0)
+      '@alepha/api-users': 0.10.5(@opentelemetry/api@1.9.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/batch': 0.10.5
+      '@alepha/bucket': 0.10.5
+      '@alepha/cache': 0.10.5
+      '@alepha/cache-redis': 0.10.5
+      '@alepha/command': 0.10.5
+      '@alepha/core': 0.10.5
+      '@alepha/datetime': 0.10.5
+      '@alepha/devtools': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/email': 0.10.5
+      '@alepha/file': 0.10.5
+      '@alepha/lock': 0.10.5
+      '@alepha/lock-redis': 0.10.5
+      '@alepha/logger': 0.10.5
+      '@alepha/postgres': 0.10.5(@opentelemetry/api@1.9.0)
+      '@alepha/queue': 0.10.5
+      '@alepha/queue-redis': 0.10.5
+      '@alepha/react': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/react-auth': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/react-form': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/react-head': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/react-i18n': 0.10.5(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@alepha/redis': 0.10.5
+      '@alepha/retry': 0.10.5
+      '@alepha/router': 0.10.5
+      '@alepha/scheduler': 0.10.5
+      '@alepha/security': 0.10.5
+      '@alepha/server': 0.10.5
+      '@alepha/server-cache': 0.10.5
+      '@alepha/server-compress': 0.10.5
+      '@alepha/server-cookies': 0.10.5
+      '@alepha/server-cors': 0.10.5
+      '@alepha/server-health': 0.10.5
+      '@alepha/server-helmet': 0.10.5
+      '@alepha/server-links': 0.10.5
+      '@alepha/server-metrics': 0.10.5
+      '@alepha/server-multipart': 0.10.5
+      '@alepha/server-proxy': 0.10.5
+      '@alepha/server-security': 0.10.5
+      '@alepha/server-static': 0.10.5
+      '@alepha/server-swagger': 0.10.5
+      '@alepha/topic': 0.10.5
+      '@alepha/topic-redis': 0.10.5
+      '@alepha/vite': 0.10.5(vite@7.1.9(@types/node@24.6.2))
     optionalDependencies:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -5676,7 +5864,7 @@ snapshots:
 
   node-releases@2.0.21: {}
 
-  nodemailer@7.0.6: {}
+  nodemailer@7.0.9: {}
 
   nopt@8.1.0:
     dependencies:
@@ -6223,7 +6411,7 @@ snapshots:
 
   type-fest@4.41.0: {}
 
-  typebox@1.0.26: {}
+  typebox@1.0.35: {}
 
   typescript@4.9.5: {}
 

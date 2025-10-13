@@ -57,7 +57,7 @@ const AuthButton = () => {
 										width: "24px",
 										borderRadius: "50%",
 									}}
-									src={auth.user.picture}
+									src={`/api/files/${auth.user.picture}`}
 								/>
 							) : (
 								<IconUser size={theme.icon.size.sm} />

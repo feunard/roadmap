@@ -64,7 +64,7 @@ const MySessions = (props: MySessionsProps) => {
 								/>
 
 								<Flex align="center" justify="center" px={"xs"}>
-									{session.userAgent?.device === "Mobile" ? (
+									{session.userAgent?.device === "MOBILE" ? (
 										<IconDeviceMobile />
 									) : (
 										<IconDeviceDesktop />
