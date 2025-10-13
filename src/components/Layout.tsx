@@ -4,7 +4,7 @@ import { Notifications } from "@mantine/notifications";
 import { NavigationProgress, nprogress } from "@mantine/nprogress";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
-import { NestedView, useAlepha, useRouterEvents } from "alepha/react";
+import { NestedView, useRouterEvents } from "alepha/react";
 import { theme } from "../constants/theme.js";
 import type { Character, Project, Task } from "../providers/Db.js";
 import Header from "./shared/Header.jsx";
@@ -20,8 +20,6 @@ declare module "alepha" {
 }
 
 const Layout = () => {
-	const alepha = useAlepha();
-
 	useRouterEvents({
 		onBegin: () => {
 			nprogress.start();
@@ -33,8 +31,8 @@ const Layout = () => {
 
 	return (
 		<>
-			{alepha.isProduction() ? <Analytics /> : undefined}
-			{alepha.isProduction() ? <SpeedInsights /> : undefined}
+			<Analytics />
+			<SpeedInsights />
 			<ColorSchemeScript defaultColorScheme={theme.defaultColorScheme} />
 			<MantineProvider
 				defaultColorScheme={theme.defaultColorScheme}
