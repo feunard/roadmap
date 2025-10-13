@@ -3,9 +3,11 @@ import { createFile } from "alepha/file";
 import { sql } from "alepha/postgres";
 import { $action, ForbiddenError } from "alepha/server";
 import { Db, tasks } from "../providers/Db.js";
+import { Security } from "../providers/Security";
 
 export class ProjectStatsApi {
 	db = $inject(Db);
+	security = $inject(Security);
 
 	getProjectStats = $action({
 		cache: true,
@@ -39,8 +41,6 @@ export class ProjectStatsApi {
 					t.object({
 						zone: t.string(),
 						totalTasks: t.int(),
-						completedTasks: t.int(),
-						completionRate: t.number(),
 					}),
 				),
 				activityTimeline: t.array(
@@ -57,16 +57,7 @@ export class ProjectStatsApi {
 			}),
 		},
 		handler: async ({ params, user }) => {
-			// Verify project access
-			const project = await this.db.projects.findOne({
-				id: { eq: params.id },
-			});
-
-			if (project.createdBy !== user.id && user.ownership && !project.public) {
-				throw new ForbiddenError(
-					`You do not have permission to access project stats for project with id ${params.id}`,
-				);
-			}
+			await this.security.checkOwnership(params.id, user);
 
 			// Get overview stats
 			const overviewQuery = await this.db.query(sql`
@@ -152,46 +143,35 @@ export class ProjectStatsApi {
 				averageXP: Math.round(Number(row.average_xp) || 0),
 			}));
 
-			// Get top 5 zones/packages
+			// Get top 6 zones/packages
 			const zonesQuery = await this.db.query(
 				sql`
 				SELECT
 					COALESCE(${tasks.package}, 'Unassigned') as zone,
-					COUNT(*) as total_tasks,
-					COUNT(CASE WHEN ${tasks.completedAt} IS NOT NULL THEN 1 END) as completed_tasks
+					COUNT(*) as total_tasks
 				FROM ${tasks}
 				WHERE ${tasks.projectId} = ${params.id} AND ${tasks.deletedAt} IS NULL
 				GROUP BY ${tasks.package}
 				ORDER BY total_tasks DESC
-				LIMIT 5
+				LIMIT 6
 			`,
 				t.object({
 					zone: t.string(),
 					total_tasks: t.string(),
-					completed_tasks: t.string(),
 				}),
 			);
 
-			const topZones = zonesQuery.map((row) => {
-				const totalTasks = Number(row.total_tasks) || 0;
-				const completedTasks = Number(row.completed_tasks) || 0;
-				const completionRate =
-					totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
+			const topZones = zonesQuery.map((row) => ({
+				zone: row.zone,
+				totalTasks: Number(row.total_tasks) || 0,
+			}));
 
-				return {
-					zone: row.zone,
-					totalTasks,
-					completedTasks,
-					completionRate,
-				};
-			});
-
-			// Get activity timeline (last 14 days with all dates)
+			// Get activity timeline (last 365 days with all dates for filtering on frontend)
 			const timelineQuery = await this.db.query(
 				sql`
 				WITH date_series AS (
 					SELECT generate_series(
-						CURRENT_DATE - INTERVAL '13 days',
+						CURRENT_DATE - INTERVAL '364 days',
 						CURRENT_DATE,
 						'1 day'::interval
 					)::date AS date
