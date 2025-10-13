@@ -18,6 +18,21 @@ export class UserApi {
 		},
 	});
 
+	public readonly streamUserFile = $action({
+		path: `/users/files/:id`,
+		schema: {
+			params: t.object({
+				id: t.uuid(),
+			}),
+			response: t.file(),
+		},
+		handler: async ({ params, reply }) => {
+			const stream = await this.fileService.streamFile(params.id);
+			reply.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+			return stream;
+		},
+	});
+
 	updateAvatar = $action({
 		schema: {
 			body: t.object({

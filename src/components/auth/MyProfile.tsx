@@ -145,7 +145,7 @@ const MyProfile = (props: ProfileProps) => {
 					<Group gap="xl" align="flex-start">
 						<Stack gap="xs" align="center">
 							<Avatar
-								src={`/api/files/${currentUser.picture}`}
+								src={`/api/users/files/${currentUser.picture}`}
 								size={120}
 								radius="md"
 							>

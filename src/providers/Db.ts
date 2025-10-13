@@ -1,8 +1,10 @@
 import { $inject, type Static, t } from "alepha";
+import { files } from "alepha/api/files";
 import { identities, sessions, users } from "alepha/api/users";
 import { $bucket } from "alepha/bucket";
 import { $entity, $repository, PostgresProvider, pg } from "alepha/postgres";
 
+export { files } from "alepha/api/files";
 export {
 	identities,
 	sessions,
@@ -140,6 +142,7 @@ export class Db {
 	sessions = $repository(sessions);
 	characters = $repository(characters);
 	invitations = $repository(invitations);
+	files = $repository(files);
 
 	avatars = $bucket({
 		name: "avatars",
